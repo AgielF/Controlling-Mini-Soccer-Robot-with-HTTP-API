@@ -10,7 +10,6 @@ A project for controlling a robot with DC motors and servos. This robot has two 
 
 * **Manual Mode:** Directly control the robot's movement (DC motors) and peripherals (servos) using a keyboard or other input device.
 * **Automatic Mode:** The robot automatically detects and moves towards a ball using camera vision (OpenCV with contour detection).
-* **Obstacle Avoidance:** An integrated distance sensor helps the robot to stop or change its path when it gets too close to an object.
 * **Real-time Vision:** Live camera feed to monitor the robot's environment and detection process.
 
 ---
