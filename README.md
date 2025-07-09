@@ -1,6 +1,6 @@
 # Robot Controller: DC Motor & Servo
 
-![Robot Banner](https://via.placeholder.com/800x200.png?text=Robot+Controller+Project)
+
 
 A project for controlling a robot with DC motors and servos. This robot has two operational modes: **manual control** via a user interface and **automatic mode**, which uses a camera to detect a ball and a distance sensor to measure proximity.
 
@@ -21,7 +21,7 @@ A project for controlling a robot with DC motors and servos. This robot has two 
 * Motor driver (e.g., L298N)
 * Microcontroller (e.g., Arduino, ESP32)
 * Servo motor(s)
-* USB camera
+* ESP32CAM
 * Distance sensor (e.g., Ultrasonic HC-SR04)
 * Power supply (e.g., battery pack)
 * Jumper wires
@@ -41,7 +41,11 @@ A project for controlling a robot with DC motors and servos. This robot has two 
     ```
 * **PySerial:** To communicate with the microcontroller.
     ```bash
-    pip install pyserial
+    pip install cvzone
+    ```
+* **PySerial:** To communicate with the microcontroller.
+    ```bash
+    pip install request
     ```
 * **Arduino IDE:** To program the microcontroller.
 
@@ -51,12 +55,21 @@ A project for controlling a robot with DC motors and servos. This robot has two 
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/your-repository-name.git](https://github.com/your-username/your-repository-name.git)
+    git clone [https://github.com/AgielF/Controlling-Mini-Soccer-Robot-with-HTTP-API.git](https://github.com/AgielF/Controlling-Mini-Soccer-Robot-with-HTTP-API.git)
     ```
 2.  **Hardware Connection:**
     * Connect the DC motors and power supply to the motor driver.
+      const int enA = 18;
+      const int in1 = 19;
+      const int in2 = 32;
+      const int enB = 25;
+      const int in3 = 33;
+      const int in4 = 26;
+      const int trigPin = 4;
+      const int echoPin = 16;
+      const int servoPin = 27;
     * Connect the motor driver, servos, and distance sensor to the microcontroller's pins.
-    * Connect the USB camera to your computer or single-board computer (e.g., Raspberry Pi).
+    * Connect the ESP32CAM to computer and upload the D3-242-IFB-308-ROB-prg-camera.ino
 3.  **Upload Microcontroller Code:**
     * Open the `.ino` file in the `arduino/` directory with the Arduino IDE.
     * Select the correct board and port.
@@ -74,30 +87,17 @@ In this mode, you have direct control over the robot.
 
 1.  Run the manual control script:
     ```bash
-    python manual_control.py
+    python D3-242-IFB-308-ROB-prg-ui.py
     ```
 2.  Use the following keys to control the robot:
-    * **W:** Move forward
-    * **S:** Move backward
-    * **A:** Turn left
-    * **D:** Turn right
-    * **Q / E:** Control servo 1
-    * **Z / C:** Control servo 2
-    * **Spacebar:** Stop
+    * **Maju:** Move forward
+    * **Mundur:** Move backward
+    * **Berhenti:** Stop
+    * **Grab:** Grab servo
+    * **release:** release servo
+    * **Manual:** Manual mode
+    * **Auto:** Auto mode
 
-### Automatic Mode
-
-In this mode, the robot will automatically search for and move towards a ball.
-
-1.  Make sure the camera and distance sensor are properly connected.
-2.  Run the automatic mode script:
-    ```bash
-    python automatic_mode.py
-    ```
-3.  The robot will now start detecting a ball (of a pre-defined color) in its field of view.
-4.  It will move towards the detected ball while maintaining a safe distance from other objects using the distance sensor. The robot will stop if an object is too close.
-
----
 
 ## 🤝 Contributing
 
